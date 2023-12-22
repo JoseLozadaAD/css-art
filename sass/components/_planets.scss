@@ -1,0 +1,124 @@
+.planets {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  @include flex(row, center, center);
+}
+
+.planet {
+  position: relative;
+  border-radius: 50%;
+  background-size: cover;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  animation: planetRotate 10s linear infinite;
+  cursor: pointer;
+}
+
+/* .planet:hover {
+  animation: planetRotate 5s linear infinite;
+  scale: 1.2;
+} */
+
+.orbit {
+  position: relative;
+  @include flex(row, center, start);
+}
+
+.orbit--mercury {
+  @include orbit($mercury-orbit, $mercury-orbit-time);
+}
+
+.planet--mercury {
+  @include set-planet($mercury-size, $mercury-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/mercury2.jpg);
+
+  &::after {
+    content: 'Mercury';
+    @include planet-label();
+  }
+}
+
+.orbit--venus {
+  @include orbit($venus-orbit, $venus-orbit-time);
+}
+
+.planet--venus {
+  @include set-planet($venus-size, $venus-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/venus2.jpg);
+
+  &::after {
+    content: 'Venus';
+    @include planet-label();
+  }
+}
+
+.orbit--earth {
+  @include orbit($earth-orbit, $earth-orbit-time);
+}
+
+.planet--earth {
+  @include set-planet($earth-size, $earth-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/earth.jpg);
+
+  &::after {
+    content: 'Earth';
+    @include planet-label();
+  }
+}
+
+.orbit--mars {
+  @include orbit($mars-orbit, $mars-orbit-time);
+}
+
+.planet--mars {
+  @include set-planet($mars-size, $mars-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/mars.jpg);
+
+  &::after {
+    content: 'Mars';
+    @include planet-label();
+  }
+}
+
+.orbit--jupiter {
+  @include orbit($jupiter-orbit, $jupiter-orbit-time);
+}
+
+.planet--jupiter {
+  @include set-planet($jupiter-size, $jupiter-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/jupiter.jpg);
+
+  &::after {
+    content: 'Jupiter';
+    @include planet-label();
+  }
+}
+
+.orbit--saturn {
+  @include orbit($saturn-orbit, $saturn-orbit-time);
+}
+
+.planet--saturn {
+  @include set-planet($saturn-size, $saturn-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/saturn.jpg);
+
+  &::after {
+    content: 'Saturn';
+    @include planet-label();
+  }
+}
+
+.orbit--uranus {
+  @include orbit($uranus-orbit, $uranus-orbit-time);
+}
+
+.planet--uranus {
+  @include set-planet($uranus-size, $uranus-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/uranus.jpg);
+
+  &::after {
+    content: 'Uranus';
+    @include planet-label();
+  }
+}
