@@ -10,17 +10,20 @@
   padding: 2rem;
   background-color: rgba($color: #fff, $alpha: 0.5);
   border-radius: 1rem;
-  @include flex(column, center, center);
   box-shadow: 0 0 1rem rgba($color: white, $alpha: 0.3);
+  @include flex(column, center, center);
 
   &__radio-label {
     position: relative;
     font-family: inherit;
     font-size: 1.4rem;
     font-weight: 400;
-    padding-left: 3rem;
-    padding-top: 0.3rem;
     cursor: pointer;
+    @include flex(row, center, center);
+
+    @include respond(tab-port) {
+      font-size: 3rem;
+    }
   }
 
   &__radio-button {
@@ -29,9 +32,7 @@
     border: 2px solid black;
     border-radius: 2px;
     display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
+    margin-right: 1rem;
 
     &::after {
       content: '';
