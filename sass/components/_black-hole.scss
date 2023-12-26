@@ -1,0 +1,31 @@
+.black-hole {
+  opacity: 0;
+  width: 10rem;
+  height: 10rem;
+  z-index: 10000;
+  transition: all 3s ease-in-out;
+
+  &__external {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: linear-gradient(#ff4500, #ff4500, #ff9900);
+    box-shadow: 0 0 6rem 3rem #fcbd3e, 0 0 10rem 6rem #fd7a4d,
+      0 0 14rem 9rem #ff0b6b;
+    @include flex(row, center, center);
+    filter: blur(5px);
+  }
+
+  &__internal {
+    width: 90%;
+    height: 90%;
+    border-radius: 45% 50% 50% 50%;
+    background-color: black;
+    transform: rotate(0deg);
+    animation: hole 0.1s linear infinite normal;
+  }
+}
+
+.radio-input:checked ~ .black-hole {
+  opacity: 1;
+}
