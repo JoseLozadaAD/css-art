@@ -2,7 +2,12 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  transition: all 2s ease-in-out;
   @include flex(row, center, center);
+}
+
+.radio-input:checked ~ .planets {
+  opacity: 0;
 }
 
 .planet {

@@ -5,12 +5,12 @@
   width: 6rem;
   border-radius: 50%;
   box-shadow: 0 0 5rem 1rem rgba(202, 126, 26, 0.7);
-  background-image: radial-gradient(circle at center, #ffa500, #ff4500);
+  background-color: rgba(255, 165, 0, 1);
   background-position: center;
   animation: glow 2s ease-in-out infinite backwards;
   animation-direction: alternate;
   animation-play-state: paused;
-  transition: all 0.3s ease-in-out;
+  transition: all 1s ease-in-out;
   cursor: pointer;
 
   &:hover {

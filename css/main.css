@@ -30,6 +30,43 @@
     transform: rotate(360deg);
   }
 }
+@keyframes checked {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes explosionAnimation {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 2rem rgba(202, 126, 26, 0.7), 0 0 4rem rgba(202, 126, 26, 0.7), 0 0 6rem rgba(202, 126, 26, 0.7), 0 0 8rem rgba(202, 126, 26, 0.7);
+  }
+  25% {
+    background-color: rgb(255, 165, 0);
+    transform: scale(5);
+    box-shadow: 0 0 2rem rgba(202, 126, 26, 0.7), 0 0 4rem rgba(202, 126, 26, 0.7), 0 0 6rem rgba(202, 126, 26, 0.7), 0 0 8rem rgba(202, 126, 26, 0.7);
+  }
+  50% {
+    background-color: rgb(255, 165, 0);
+    transform: scale(10);
+    box-shadow: 0 0 0 3rem rgba(202, 126, 26, 0.7), 0 0 0 6rem rgba(202, 126, 26, 0.7), 0 0 0 9rem rgba(202, 126, 26, 0.7), 0 0 0 12rem rgba(202, 126, 26, 0.7), 0 0 0 15rem rgba(202, 126, 26, 0.7);
+  }
+  75% {
+    transform: scale(10);
+    background-color: rgb(255, 165, 0);
+    box-shadow: 0 0 0 18rem rgba(202, 126, 26, 0.7), 0 0 0 21rem rgba(202, 126, 26, 0.7), 0 0 0 24rem rgba(202, 126, 26, 0.7), 0 0 0 27rem rgba(202, 126, 26, 0.7), 0 0 0 30rem rgba(202, 126, 26, 0.7);
+  }
+  100% {
+    transform: scale(10);
+    background-color: rgb(255, 165, 0);
+    box-shadow: 0 0 0 33rem rgba(202, 126, 26, 0.7), 0 0 0 36rem rgba(202, 126, 26, 0.7), 0 0 0 39rem rgba(202, 126, 26, 0.7), 0 0 0 42rem rgba(202, 126, 26, 0.7), 0 0 0 45rem rgba(202, 126, 26, 0.7);
+  }
+}
 *,
 *::after,
 *::before {
@@ -86,6 +123,21 @@ body {
   background-size: contain;
 }
 
+.explosion {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: rgb(255, 165, 0);
+  z-index: 2000;
+  box-shadow: 0 0 2rem rgb(255, 165, 0), 0 0 4rem rgb(255, 165, 0), 0 0 6rem rgb(255, 165, 0), 0 0 8rem rgb(255, 165, 0);
+  transition: all 1s;
+}
+
+.radio-input:checked ~ .explosion {
+  animation: explosionAnimation 3s none;
+}
+
 .sun {
   z-index: 1000;
   position: relative;
@@ -93,12 +145,12 @@ body {
   width: 6rem;
   border-radius: 50%;
   box-shadow: 0 0 5rem 1rem rgba(202, 126, 26, 0.7);
-  background-image: radial-gradient(circle at center, #ffa500, #ff4500);
+  background-color: rgb(255, 165, 0);
   background-position: center;
   animation: glow 2s ease-in-out infinite backwards;
   animation-direction: alternate;
   animation-play-state: paused;
-  transition: all 0.3s ease-in-out;
+  transition: all 1s ease-in-out;
   cursor: pointer;
 }
 .sun:hover {
@@ -110,10 +162,15 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  transition: all 2s ease-in-out;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.radio-input:checked ~ .planets {
+  opacity: 0;
 }
 
 .planet {
@@ -354,4 +411,67 @@ body {
   font-size: 1.1rem;
   z-index: 1000;
   transform: translateX(-50%);
+}
+
+.radio-input {
+  display: none;
+}
+
+.panel {
+  position: absolute;
+  z-index: 1000;
+  top: 5rem;
+  left: 5rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.3);
+}
+.panel__radio-label {
+  position: relative;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-left: 3rem;
+  padding-top: 0.3rem;
+  cursor: pointer;
+}
+.panel__radio-button {
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid black;
+  border-radius: 2px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.panel__radio-button::after {
+  content: "";
+  display: block;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1, 1);
+  -webkit-clip-path: polygon(36% 55%, 83% 17%, 98% 39%, 56% 70%, 30% 89%, 3% 53%, 23% 36%);
+          clip-path: polygon(36% 55%, 83% 17%, 98% 39%, 56% 70%, 30% 89%, 3% 53%, 23% 36%);
+  background-color: black;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.radio-input:checked + .panel .panel__radio-label .panel__radio-button::after {
+  opacity: 1;
+  animation: checked 0.5s ease-out;
+}
+
+.radio-input:checked + .panel {
+  display: none;
 }
