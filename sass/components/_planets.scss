@@ -11,12 +11,10 @@
 }
 
 .planet {
-  position: relative;
   border-radius: 50%;
   background-size: cover;
   object-fit: cover;
   transition: all 0.3s ease-in-out;
-  animation: planetRotate 10s linear infinite;
   cursor: pointer;
 }
 
@@ -72,6 +70,18 @@
   }
 }
 
+.suborbit {
+  @include orbit($earth-suborbit, $moon-orbit-time);
+  @include flex(row, center, start);
+  top: calc(-#{$earth-suborbit} / 2);
+  z-index: 1000;
+}
+
+.moon {
+  @include set-planet($moon-size, $moon-rotation-time);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/moon.jpg);
+}
+
 .orbit--mars {
   @include orbit($mars-orbit, $mars-orbit-time);
 }
@@ -92,7 +102,16 @@
 
 .planet--jupiter {
   @include set-planet($jupiter-size, $jupiter-rotation-time);
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/jupiter.jpg);
+  // Como hago un gradiente para jupiter
+  background-image: linear-gradient(
+    to bottom,
+    #ffa726,
+    #d84315,
+    #bf360c,
+    #3e2723,
+    #1b0000
+  );
+  // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/jupiter.jpg);
 
   &::after {
     content: 'Jupiter';
@@ -106,7 +125,18 @@
 
 .planet--saturn {
   @include set-planet($saturn-size, $saturn-rotation-time);
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/saturn.jpg);
+  background-image: linear-gradient(
+    to bottom,
+    #fff8dc,
+    #b4b4b4,
+    #fdf5e6,
+    #faf0e6,
+    #bab9b8,
+    #faebd7,
+    #ffe4b5
+  );
+
+  // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/saturn.jpg);
 
   &::after {
     content: 'Saturn';

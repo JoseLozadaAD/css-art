@@ -179,13 +179,11 @@ body {
 }
 
 .planet {
-  position: relative;
   border-radius: 50%;
   background-size: cover;
   -o-object-fit: cover;
      object-fit: cover;
   transition: all 0.3s ease-in-out;
-  animation: planetRotate 10s linear infinite;
   cursor: pointer;
 }
 
@@ -294,6 +292,30 @@ body {
   transform: translateX(-50%);
 }
 
+.suborbit {
+  position: absolute;
+  height: 5.95rem;
+  width: 5.95rem;
+  border-radius: 50%;
+  animation: orbit 4s linear infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  top: calc(-5.95rem / 2);
+  z-index: 1000;
+}
+
+.moon {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  transform: translateY(calc(-1rem / 2));
+  animation: planetRotate 2s linear infinite;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/moon.jpg);
+}
+
 .orbit--mars {
   position: absolute;
   height: 40rem;
@@ -340,7 +362,7 @@ body {
   width: 6rem;
   transform: translateY(calc(-6rem / 2));
   animation: planetRotate 2s linear infinite;
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/jupiter.jpg);
+  background-image: linear-gradient(to bottom, #ffa726, #d84315, #bf360c, #3e2723, #1b0000);
 }
 .planet--jupiter::after {
   content: "Jupiter";
@@ -371,7 +393,7 @@ body {
   width: 7rem;
   transform: translateY(calc(-7rem / 2));
   animation: planetRotate 1.5s linear infinite;
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/332937/saturn.jpg);
+  background-image: linear-gradient(to bottom, #fff8dc, #b4b4b4, #fdf5e6, #faf0e6, #bab9b8, #faebd7, #ffe4b5);
 }
 .planet--saturn::after {
   content: "Saturn";
@@ -430,20 +452,27 @@ body {
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.3);
 }
 .panel__radio-label {
   position: relative;
   font-family: inherit;
   font-size: 1.4rem;
   font-weight: 400;
-  padding-left: 3rem;
-  padding-top: 0.3rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .panel__radio-label {
+    font-size: 3rem;
+  }
 }
 .panel__radio-button {
   height: 2rem;
@@ -451,9 +480,7 @@ body {
   border: 2px solid black;
   border-radius: 2px;
   display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 0;
+  margin-right: 1rem;
 }
 .panel__radio-button::after {
   content: "";
@@ -462,8 +489,8 @@ body {
   width: 1.3rem;
   border-radius: 50%;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 1rem;
+  left: 1rem;
   transform: translate(-50%, -50%) scale(1, 1);
   -webkit-clip-path: polygon(36% 55%, 83% 17%, 98% 39%, 56% 70%, 30% 89%, 3% 53%, 23% 36%);
           clip-path: polygon(36% 55%, 83% 17%, 98% 39%, 56% 70%, 30% 89%, 3% 53%, 23% 36%);
@@ -477,10 +504,9 @@ body {
   animation: checked 0.5s ease-out;
 }
 
-.radio-input:checked + .panel {
+/* .radio-input:checked + .panel {
   display: none;
-}
-
+} */
 .black-hole {
   opacity: 0;
   width: 10rem;

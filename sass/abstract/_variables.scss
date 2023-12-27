@@ -13,6 +13,11 @@ $earth-orbit: 30rem;
 $earth-rotation-time: 4s;
 $earth-orbit-time: 30s;
 
+$earth-suborbit: calc($earth-size * 1.7);
+$moon-size: 1rem;
+$moon-rotation-time: 2s;
+$moon-orbit-time: 4s;
+
 $mars-size: 4rem;
 $mars-orbit: 40rem;
 $mars-rotation-time: 5s;
