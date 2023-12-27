@@ -41,8 +41,8 @@
       width: 1.3rem;
       border-radius: 50%;
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 1rem;
+      left: 1rem;
       transform: translate(-50%, -50%) scale(1, 1);
       clip-path: polygon(
         36% 55%,
@@ -65,6 +65,6 @@
   animation: checked 0.5s ease-out;
 }
 
-.radio-input:checked + .panel {
+/* .radio-input:checked + .panel {
   display: none;
-}
+} */
